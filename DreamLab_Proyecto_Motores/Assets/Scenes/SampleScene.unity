@@ -50725,7 +50725,7 @@ MonoBehaviour:
   radioSuelo: 0.4
   capaSuelo:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   animator: {fileID: 2091105411}
 --- !u!143 &2091105404
 CharacterController:
@@ -50887,7 +50887,7 @@ MonoBehaviour:
   distanciaInteraccion: 2
   layerInteractuable:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   textoInteraccion: {fileID: 1773351181}
 --- !u!95 &2091105411
 Animator:
