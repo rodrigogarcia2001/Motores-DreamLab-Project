@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
@@ -26,20 +27,15 @@ public class ThirdPersonCamera : MonoBehaviour
 
         // Bloquear cursor para FPS/TPS
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = true;
     }
 
     void LateUpdate()
     {
         if (objetivo == null) return;
 
-        // Rotación horizontal con el ratón (alrededor del jugador)
-        if (rotarConRaton)
-        {
-            float mouseX = Input.GetAxis("Mouse X") * sensibilidadX;
-            objetivo.Rotate(Vector3.up * mouseX);
-        }
-
+        
+        rotateCamera();
         // Obtener la rotación actual del jugador (solo Y)
         Quaternion rotacionObjetivo = Quaternion.Euler(0f, objetivo.eulerAngles.y, 0f);
 
@@ -71,5 +67,13 @@ public class ThirdPersonCamera : MonoBehaviour
 
         // Siempre mirar al jugador
         transform.LookAt(objetivo);
+    }
+
+    private void rotateCamera() {
+        // Rotación horizontal con el ratón (alrededor del jugador)
+        if (rotarConRaton) {
+            float mouseX = Input.GetAxis("Mouse X") * sensibilidadX;
+            objetivo.Rotate(Vector3.up * mouseX);
+        }
     }
 }

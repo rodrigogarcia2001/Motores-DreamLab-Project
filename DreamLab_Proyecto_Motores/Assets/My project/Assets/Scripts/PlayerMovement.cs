@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
-{
+public class PlayerMovement : MonoBehaviour {
     [Header("Movimiento")]
     public float velocidad = 6f;           //Velocidad al caminar
     public float velocidadCarrera = 10f;   //Velocidad al Correr
@@ -20,36 +19,29 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocidadCaida;
     private bool estaEnSuelo;
 
-    void Start()
-    {
+    void Start() {
         controller = GetComponent<CharacterController>();
-        if (controller == null)
-        {
+        if (controller == null) {
             Debug.LogError("¡El CharacterController no está asignado en el GameObject!");
         }
         // Si no asignaste el Animator en el inspector, intenta buscarlo
-        if (animator == null)
-        {
+        if (animator == null) {
             animator = GetComponentInChildren<Animator>();
             if (animator == null)
                 Debug.LogWarning("No se encontró Animator. Las animaciones no funcionarán.");
         }
     }
 
-    void Update()
-    {
+    void Update() {
         // Verificar si está en el suelo
         estaEnSuelo = Physics.CheckSphere(puntoSuelo.position, radioSuelo, capaSuelo);
-
         // Aplicar gravedad
-        if (estaEnSuelo && velocidadCaida.y < 0)
-        {
+        if (estaEnSuelo && velocidadCaida.y < 0) {
             velocidadCaida.y = -2f; // Evita acumulación excesiva
         }
 
         // Salto
-        if (Input.GetButtonDown("Jump") && estaEnSuelo)
-        {
+        if (Input.GetButtonDown("Jump") && estaEnSuelo) {
             velocidadCaida.y = Mathf.Sqrt(fuerzaSalto * -2f * gravedad);
             animator?.SetTrigger("jump");
         }
@@ -68,32 +60,24 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(direccion * velocidadActual * Time.deltaTime);
 
         // Animaciones
-        if (animator != null)
-        {
+        if (animator != null) {
             // Normalizar la entrada para evitar que caminar diagonal sea más rápido
             bool estaMoviendo = magitudMovimiento > 0.1f;
 
-            if (estaEnSuelo)
-            {
+            if (estaEnSuelo) {
                 // Solo uno sera TRUE a la ves
                 animator.SetBool("IsWalking", estaMoviendo && !corriendo);
                 animator.SetBool("IsRunning", estaMoviendo && corriendo);
 
-                if (estaMoviendo)
-                {
-                    if (corriendo)
-                    {
+                if (estaMoviendo) {
+                    if (corriendo) {
                         animator.SetBool("IsWalking", false);
                         animator.SetBool("IsRunning", true);
-                    }
-                    else
-                    {
+                    } else {
                         animator.SetBool("IsWalking", true);
                         animator.SetBool("IsRunning", false);
                     }
-                }
-                else
-                {
+                } else {
                     animator.SetBool("IsWalking", false);
                     animator.SetBool("IsRunning", false);
                 }
