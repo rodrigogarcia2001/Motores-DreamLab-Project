@@ -31550,10 +31550,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meele_Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 7946205381755713773, guid: ed4ac70a6d092f24a992051a7a41539e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8222396333346270036, guid: ed4ac70a6d092f24a992051a7a41539e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -32.48
@@ -31764,10 +31760,6 @@ PrefabInstance:
     - target: {fileID: 7054146797935342892, guid: bb4eb62e591523741b39ebeb86ac2348, type: 3}
       propertyPath: m_Name
       value: Range_Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7054146797935342892, guid: bb4eb62e591523741b39ebeb86ac2348, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7338144211771210994, guid: bb4eb62e591523741b39ebeb86ac2348, type: 3}
       propertyPath: projectilePool

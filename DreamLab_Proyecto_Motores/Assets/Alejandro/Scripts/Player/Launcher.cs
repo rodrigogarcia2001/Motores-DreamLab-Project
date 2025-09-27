@@ -45,7 +45,7 @@ public class Launcher : MonoBehaviour, ILauncher {
         GameObject newProjectile = projectilePool.getObject();//ProjectilePoolManager.Instance.GetProjectile();
         newProjectile.transform.position = launchPoint.position;
         newProjectile.transform.rotation = launchPoint.rotation;
-        
+        Debug.Log("position: " + transform.position +" - rotation: " + transform.rotation);
         ProjectileController projectileController = newProjectile.GetComponent<ProjectileController>();
 
         if (projectileController != null) {

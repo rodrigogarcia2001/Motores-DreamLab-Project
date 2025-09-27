@@ -9,6 +9,10 @@ public class ProjectileController : MonoBehaviour {
 
     //COMPONENTS
     private Rigidbody projectileRb;
+
+    private void Update() {
+        Debug.Log("p: " + transform.position);
+    }
     void Awake() {
         projectileRb = GetComponent<Rigidbody>();
         if (projectileRb == null) Debug.Log("ProjectileController: RigidBody is null.");
@@ -16,6 +20,7 @@ public class ProjectileController : MonoBehaviour {
 
     public void Launch(Vector3 direction) {
         projectileRb.AddForce(direction.normalized * launchForce, ForceMode.Impulse);
+        Debug.Log("direction: " + direction.normalized);
         StartCoroutine(destroyProjectile());
     }
 
