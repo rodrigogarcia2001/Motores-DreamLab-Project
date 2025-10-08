@@ -39,9 +39,9 @@ public class PlayerMovement : MonoBehaviour {
         if (estaEnSuelo && velocidadCaida.y < 0) {
             velocidadCaida.y = -2f; // Evita acumulación excesiva
         }
-
         // Salto
         if (Input.GetButtonDown("Jump") && estaEnSuelo) {
+            Debug.Log("salto!");
             velocidadCaida.y = Mathf.Sqrt(fuerzaSalto * -2f * gravedad);
             animator?.SetTrigger("jump");
         }

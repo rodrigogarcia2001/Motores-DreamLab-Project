@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - PlayerProjectile
   - EnemyProjectile
+  - Door
+  - Key
   layers:
   - Default
   - TransparentFX
