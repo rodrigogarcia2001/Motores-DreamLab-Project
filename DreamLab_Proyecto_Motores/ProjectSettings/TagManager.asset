@@ -7,6 +7,12 @@ TagManager:
   - Ground
   - PlayerProjectile
   - EnemyProjectile
+  - Door
+  - Key
+  - HealthBar
+  - Enemy
+  - Portal
+  - Page
   layers:
   - Default
   - TransparentFX

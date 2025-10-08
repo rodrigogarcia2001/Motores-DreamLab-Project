@@ -25,13 +25,13 @@ public class EnemyHealth : MonoBehaviour,IHealth {
         if(healthBar == null)       Debug.Log("EnemyHealth: HealthManager component is null.");
         if(enemyScore == null)      Debug.Log("EnemyHealth: EnemyScorePoints component is null.");
     }
-
+    /*
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("PlayerProjectile") && !enemyMovement.isFrozen()) {
             handleTakeDamage(collision);
         }
     }
-
+    
     private void handleTakeDamage(Collision projectile) {
         ProjectileDamage damage = projectile.gameObject.GetComponent<ProjectileDamage>();
         takeDamaged(damage.getDamage());
@@ -40,7 +40,22 @@ public class EnemyHealth : MonoBehaviour,IHealth {
         if (isDead()) destroyEnemy();
         
     }
+    */
+   
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("PlayerProjectile") && !enemyMovement.isFrozen()) {
+            handleTakeDamage(other);
+        }
+    }
 
+    private void handleTakeDamage(Collider projectile) {
+        ProjectileDamage damage = projectile.gameObject.GetComponent<ProjectileDamage>();
+        takeDamaged(damage.getDamage());
+        updateHealthBar(damage.getDamage());
+
+        if (isDead()) destroyEnemy();
+
+    }
     public void takeDamaged(int damage) {
         enemyMovement.freeze();
         health -= damage;
