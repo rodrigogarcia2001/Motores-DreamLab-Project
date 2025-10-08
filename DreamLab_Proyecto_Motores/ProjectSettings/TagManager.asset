@@ -9,6 +9,10 @@ TagManager:
   - EnemyProjectile
   - Door
   - Key
+  - HealthBar
+  - Enemy
+  - Portal
+  - Page
   layers:
   - Default
   - TransparentFX

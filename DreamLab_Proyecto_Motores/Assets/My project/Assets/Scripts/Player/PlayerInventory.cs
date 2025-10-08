@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerInventory : MonoBehaviour {
     [Header("Player Inventory settings")]
-    [SerializeField] private List<KeyData> keyList = new List<KeyData>();
+    private List<KeyData> keyList = new List<KeyData>();
+    private bool pageCollected = false;
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("Door")) {
@@ -25,6 +27,15 @@ public class PlayerInventory : MonoBehaviour {
             else 
                 showMessage(doorController.getKeyName());
         }
+
+        if (collision.gameObject.CompareTag("Portal")) {
+            if (pageCollected) {
+                SceneManager.LoadScene("Victory");
+            } 
+            else {
+                Debug.Log("Need page to use portal");
+            }
+        }
     }
 
 
@@ -41,6 +52,11 @@ public class PlayerInventory : MonoBehaviour {
             Debug.Log("Key Added -> id: " + key.getId() + ", name: " + key.getName() + ", total keys: " + keyList.Count);
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.CompareTag("Page")) {
+            pageCollected = true;
+            Destroy(other.gameObject);
+        }
     }
 
     private int findKeyWithId(int keyId) {
@@ -53,6 +69,9 @@ public class PlayerInventory : MonoBehaviour {
         return -1;
     }
 
+    public bool hasPage() {
+        return pageCollected;
+    }
     private void showMessage(string message) {
         Debug.Log("You need key: " + message);
     }
