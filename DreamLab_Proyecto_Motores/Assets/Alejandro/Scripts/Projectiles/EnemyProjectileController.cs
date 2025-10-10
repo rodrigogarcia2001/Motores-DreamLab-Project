@@ -14,8 +14,21 @@ public class EnemyProjectileController : MonoBehaviour {
     }
 
     public void Launch(Vector3 direction) {
-        projectileRb.AddForce(direction.normalized * launchForce, ForceMode.Impulse);
+
+        // Reset de velocidad y rotaci�n
+
+        projectileRb.linearVelocity = Vector3.zero;
+        projectileRb.angularVelocity = Vector3.zero;
+
+        projectileRb.linearVelocity = direction.normalized * launchForce;
         StartCoroutine(destroyProjectile());
+    }
+
+    private void FixedUpdate()
+    {
+        // Rotar hacia la direcci�n de movimiento
+        if (projectileRb.linearVelocity.sqrMagnitude > 0.0001f)
+            projectileRb.rotation = Quaternion.LookRotation(projectileRb.linearVelocity);
     }
 
     void OnCollisionEnter(Collision collision) {

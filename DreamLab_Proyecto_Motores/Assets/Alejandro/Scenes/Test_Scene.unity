@@ -21263,7 +21263,7 @@ GameObject:
   - component: {fileID: 1776473238}
   - component: {fileID: 1776473237}
   - component: {fileID: 1776473236}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31670,11 +31670,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5886771607104486028, guid: bb4eb62e591523741b39ebeb86ac2348, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 5886771607104486028, guid: bb4eb62e591523741b39ebeb86ac2348, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38.205055
+      value: -37.85
       objectReference: {fileID: 0}
     - target: {fileID: 5886771607104486028, guid: bb4eb62e591523741b39ebeb86ac2348, type: 3}
       propertyPath: m_LocalRotation.w
@@ -31710,8 +31710,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7054146797935342892, guid: bb4eb62e591523741b39ebeb86ac2348, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7338144211771210994, guid: bb4eb62e591523741b39ebeb86ac2348, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1624742876}
     - target: {fileID: 7338144211771210994, guid: bb4eb62e591523741b39ebeb86ac2348, type: 3}
       propertyPath: projectilePool
       value: 

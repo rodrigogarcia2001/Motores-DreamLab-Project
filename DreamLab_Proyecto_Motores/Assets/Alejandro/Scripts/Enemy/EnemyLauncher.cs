@@ -2,6 +2,9 @@ using System.Collections;
 using UnityEngine;
 
 public class EnemyLauncher : MonoBehaviour , ILauncher {
+    [Header("Player Reference")]
+    [SerializeField] private Transform player;
+
     [Header("Projectile prefab")]
     [SerializeField] private Transform launchPoint;
     [SerializeField] private float launchSpeed = 20f;
@@ -9,6 +12,7 @@ public class EnemyLauncher : MonoBehaviour , ILauncher {
     [SerializeField] private Pool projectilePool;
     [SerializeField] private float attackRange = 6f;
 
+    private Rigidbody rb;
     private EnemyRangedMovement enemyMovement;
     private bool launcherAvailable = true;
 
@@ -26,14 +30,14 @@ public class EnemyLauncher : MonoBehaviour , ILauncher {
     public void FireProjectile() {
         GameObject newProjectile = projectilePool.getObject();//ProjectilePoolManager.Instance.GetProjectile();
         newProjectile.transform.position = launchPoint.position;
-        newProjectile.transform.rotation = Quaternion.Euler(new Vector3(0f,launchPoint.rotation.y,0f));//launchPoint.rotation;
+
+        Vector3 directionToPlayer = (player.position - launchPoint.position).normalized;     
+        newProjectile.transform.rotation = Quaternion.LookRotation(directionToPlayer);
 
         EnemyProjectileController projectileController = newProjectile.GetComponent<EnemyProjectileController>();
-
         if (projectileController != null) {
-            Vector3 launchDirection = launchPoint.forward;
             projectileController.setLauchForce(launchSpeed);
-            projectileController.Launch(launchDirection);
+            projectileController.Launch(directionToPlayer);
         }
         launcherAvailable = false;
         StartCoroutine(restartLaucher());
