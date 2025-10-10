@@ -17,7 +17,7 @@ public class Launcher : MonoBehaviour, ILauncher {
     }
 
     public Vector3 getCameraCenterTarget() {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = new Ray (Camera.main.transform.position, Camera.main.transform.forward);
         RaycastHit hit;
         Vector3 targetPoint;
 
@@ -26,11 +26,13 @@ public class Launcher : MonoBehaviour, ILauncher {
             targetPoint = hit.point; // If the ray hits an object, use that point
         } else {
             // If the ray doesn't hit anything, project a point a certain distance in front of the camera
-            targetPoint = ray.GetPoint(50f); // Adjust the distance as needed
+            targetPoint = ray.GetPoint(100f); // Adjust the distance as needed
         }
 
         // Calculate the direction from the fire point to the target point
-        return (targetPoint - transform.position).normalized;
+        Vector3 dir = (targetPoint - launchPoint.position).normalized;
+        Debug.DrawRay(launchPoint.position, dir * 20f, Color.red, 2f);
+        return dir;
         /*
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
@@ -42,12 +44,13 @@ public class Launcher : MonoBehaviour, ILauncher {
     }
 
     public void FireProjectile() {
+        Debug.Log("FireProjectile ejecutado");
         GameObject newProjectile = projectilePool.getObject();
         //ProjectilePoolManager.Instance.GetProjectile();
         newProjectile.transform.position = launchPoint.position;
 
         //Calcula la dirección hacia donde apunta el mouse
-        Vector3 launchDirection = getCameraCenterTarget();
+        Vector3 launchDirection = launchPoint.forward;
         //Orienta al proyectil hacia la dirección del mouse
         newProjectile.transform.rotation = Quaternion.LookRotation(launchDirection);
         ProjectileController projectileController = newProjectile.GetComponent<ProjectileController>();

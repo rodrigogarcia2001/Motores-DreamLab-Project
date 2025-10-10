@@ -16,8 +16,12 @@ public class ProjectileController : MonoBehaviour {
     }
 
     public void Launch(Vector3 direction) {
-        Debug.Log("Lauch from: " + transform.position); 
+        Debug.Log("Launch from: " + transform.position); 
         Debug.Log("Direction: " + direction);
+        //reinicio la fisica antes de que se lanze, as� no se acumula de lanzamientos anteriores
+        projectileRb.linearVelocity = Vector3.zero;
+        projectileRb.angularVelocity = Vector3.zero;
+
         projectileRb.AddForce(direction.normalized * launchForce, ForceMode.Impulse);
         StartCoroutine(destroyProjectile());
     }
