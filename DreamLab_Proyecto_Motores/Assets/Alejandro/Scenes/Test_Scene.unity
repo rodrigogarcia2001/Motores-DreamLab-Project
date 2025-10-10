@@ -7283,7 +7283,7 @@ Transform:
   m_GameObject: {fileID: 609579839}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.019, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: -0.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18227,7 +18227,7 @@ MonoBehaviour:
   radioSuelo: 0.4
   capaSuelo:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   animator: {fileID: 1624742868}
 --- !u!114 &1624742878
 MonoBehaviour:
@@ -28574,7 +28574,7 @@ GameObject:
   - component: {fileID: 1869042849}
   - component: {fileID: 1869042848}
   - component: {fileID: 1869042847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
