@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour {
         // Salto
         if (Input.GetButtonDown("Jump") && estaEnSuelo) {
             Debug.Log("salto!");
-            velocidadCaida.y = Mathf.Sqrt(fuerzaSalto * 2f * gravedad);
+            velocidadCaida.y = Mathf.Sqrt(fuerzaSalto * -2f * gravedad);
             animator?.SetTrigger("jump");
         }
 

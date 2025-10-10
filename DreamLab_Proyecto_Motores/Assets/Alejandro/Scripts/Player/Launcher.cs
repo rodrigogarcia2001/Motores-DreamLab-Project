@@ -45,11 +45,14 @@ public class Launcher : MonoBehaviour, ILauncher {
         GameObject newProjectile = projectilePool.getObject();
         //ProjectilePoolManager.Instance.GetProjectile();
         newProjectile.transform.position = launchPoint.position;
-        newProjectile.transform.rotation = launchPoint.rotation;
+
+        //Calcula la dirección hacia donde apunta el mouse
+        Vector3 launchDirection = getCameraCenterTarget();
+        //Orienta al proyectil hacia la dirección del mouse
+        newProjectile.transform.rotation = Quaternion.LookRotation(launchDirection);
         ProjectileController projectileController = newProjectile.GetComponent<ProjectileController>();
 
         if (projectileController != null) {
-            Vector3 launchDirection = launchPoint.forward;
             projectileController.setLauchForce(launchSpeed);
             projectileController.Launch(launchDirection);
         }
