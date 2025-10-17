@@ -15,28 +15,17 @@ public class PlayerHealth : MonoBehaviour, IHealth {
 
     void Start() {
         playerMovement = GetComponent<PlayerMovement>();
-        if (playerMovement == null) Debug.Log("PlayerHealth: PlayerController is null.");
-
-        playerHealthBar = GetComponentInChildren<HealthManager>();
-        if (playerHealthBar == null) Debug.Log("PlayerHealth: HealthBar is null.");
-    }
-
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Enemy") && vulnerable) 
-            handleEnemyDamage(collision);
-    }
-
-    public void handleEnemyDamage(Collision enemy) {
-        IEnemyMovement enemyMovement = enemy.gameObject.GetComponent<IEnemyMovement>();
-        EnemyDamage enemyDamage = enemy.gameObject.GetComponent<EnemyDamage>();
-        
-        if (!enemyMovement.isFrozen() && enemyDamage != null) {
-            takeDamaged(enemyDamage.getDamage());
-            updateHealthBar(enemyDamage.getDamage());
-            
-            if (isDead()) gameOver();
+        if (playerMovement == null)
+        {
+            Debug.Log("PlayerHealth: PlayerController is null.");
         }
+        playerHealthBar = GetComponentInChildren<HealthManager>();
+        if (playerHealthBar == null) 
+        {
+            Debug.Log("PlayerHealth: HealthBar is null.");
+        }       
     }
+
 
     public void updateHealthBar(int damage) {
         playerHealthBar.takeDamage(damage);
@@ -51,6 +40,7 @@ public class PlayerHealth : MonoBehaviour, IHealth {
 
     public void takeDamaged(int damage) {
         health -= damage;
+        updateHealthBar(damage);
         if (health < 1) dead = true;
         vulnerable = false;
         Invoke("makeVulnerable", 1f);

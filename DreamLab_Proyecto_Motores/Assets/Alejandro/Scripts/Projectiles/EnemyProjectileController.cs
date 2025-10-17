@@ -31,12 +31,6 @@ public class EnemyProjectileController : MonoBehaviour {
             projectileRb.rotation = Quaternion.LookRotation(projectileRb.linearVelocity);
     }
 
-    void OnCollisionEnter(Collision collision) {
-        if (!collision.gameObject.CompareTag("Enemy")) {
-            destroy();
-        }
-    }
-
     public float getLaunchForce() { return launchForce; }
     public void setLauchForce(float force) { launchForce = force; }
     private IEnumerator destroyProjectile() {

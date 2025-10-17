@@ -28,7 +28,8 @@ public class EnemyLauncher : MonoBehaviour , ILauncher {
     }
 
     public void FireProjectile() {
-        GameObject newProjectile = projectilePool.getObject();//ProjectilePoolManager.Instance.GetProjectile();
+        GameObject newProjectile = projectilePool.getObject();
+        //ProjectilePoolManager.Instance.GetProjectile();
         newProjectile.transform.position = launchPoint.position;
 
         Vector3 directionToPlayer = (player.position - launchPoint.position).normalized;     
