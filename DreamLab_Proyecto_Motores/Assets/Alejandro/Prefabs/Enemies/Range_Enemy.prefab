@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 7338144211771210994}
   - component: {fileID: 6646383877733991967}
   - component: {fileID: 7974923185298734825}
+  - component: {fileID: 8946472855248535628}
   - component: {fileID: 7769709429281499604}
   m_Layer: 0
   m_Name: Range_Enemy
@@ -221,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd5456abc97eb540a164cdb6179a879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   launchPoint: {fileID: 4552611663065498418}
   launchSpeed: 20
   cooldownSeconds: 1
@@ -253,6 +255,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1718405685301502480}
+--- !u!114 &8946472855248535628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054146797935342892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c1a17ab1b13f349a0d4b1264900f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
 --- !u!54 &7769709429281499604
 Rigidbody:
   m_ObjectHideFlags: 0
