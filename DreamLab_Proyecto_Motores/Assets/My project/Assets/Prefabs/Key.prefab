@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
-  keyName: Golden
+  keyName: front
 --- !u!135 &7376531448474178510
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -68,7 +68,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.288136
-  m_Center: {x: -0.0020570755, y: -0.32088137, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6378674724407060527
 GameObject:
   m_ObjectHideFlags: 0
